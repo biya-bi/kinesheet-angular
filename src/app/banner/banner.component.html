@@ -1,0 +1,16 @@
+<a routerLink="/">
+    <em class="material-icons">home</em>
+</a>
+
+<div class="logged-in" *ngIf="user$ | async as user; else loginTemplate">
+    <span class="welcome">Welcome {{ user.name }}</span>
+    <a routerLink="/logout">
+        <em class="material-icons">logout</em>
+    </a>
+</div>
+
+<ng-template #loginTemplate>
+    <a routerLink="/login" class="button fancy-button">
+        <em class="material-icons">login</em>Login
+    </a>
+</ng-template>
