@@ -2,8 +2,8 @@
     <em class="material-icons">home</em>
 </a>
 
-<div class="logged-in" *ngIf="user$ | async as user; else loginTemplate">
-    <span class="welcome">Welcome {{ user.name }}</span>
+<div class="logged-in" *ngIf="userProfile$ | async as userProfile; else loginTemplate">
+    <span class="welcome">Welcome {{ userProfile.info.name }}</span>
     <a routerLink="/logout">
         <em class="material-icons">logout</em>
     </a>

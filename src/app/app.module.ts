@@ -6,12 +6,14 @@ import { BrowserModule } from "@angular/platform-browser";
 import { RouterOutlet } from "@angular/router";
 import { AppComponent } from "./app.component";
 import { BannerComponent } from "./banner/banner.component";
+import { OAuthModule } from "angular-oauth2-oidc";
 
 @NgModule({
     imports: [
         BrowserModule,
         CommonModule,
         HttpClientModule,
+        OAuthModule.forRoot(),
         ReactiveFormsModule,
         RouterOutlet,
     ],
