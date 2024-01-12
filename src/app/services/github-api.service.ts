@@ -1,20 +1,46 @@
 import { Injectable } from '@angular/core';
-import { AuthenticationService } from './authentication.service';
-import { Observable } from 'rxjs';
+import { AuthConfig, OAuthService } from 'angular-oauth2-oidc';
+import { Observable, from, map, of, switchMap, take, tap } from 'rxjs';
 import { UserProfile } from '../models/UserProfile';
+import { AuthenticationService } from './authentication.service';
+
+const authConfig: AuthConfig = {
+  issuer: "https://token.actions.githubusercontent.com",
+  redirectUri: window.location.origin,
+  clientId: 'dde1094aff15f4f85f68',
+  scope: 'read:user',
+  tokenEndpoint: 'https://github.com/login/oauth/access_token',
+  userinfoEndpoint: 'https://api.github.com/user',
+  loginUrl: 'https://github.com/login/oauth/authorize',
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class GithubApiService implements AuthenticationService {
 
-  constructor() { }
+  constructor(private readonly oAuthService: OAuthService) {
+    this.oAuthService.configure(authConfig);
+  }
 
   logIn(): Observable<UserProfile> {
-    throw new Error('Method not implemented.');
+    return from(this.oAuthService.loadDiscoveryDocumentAndTryLogin()).pipe(
+      take(1),
+      switchMap(() => from(this.oAuthService.tryLoginCodeFlow())),
+      switchMap(() => {
+        if (!this.oAuthService.hasValidAccessToken()) {
+          this.oAuthService.configure(authConfig);
+          this.oAuthService.initCodeFlow(); 
+          return of(null);
+        }
+        return from(this.oAuthService.loadUserProfile())
+      }),
+      tap((u) => console.log(u)),
+      map((result) => result as UserProfile));
   }
 
   logOut(): void {
-    throw new Error('Method not implemented.');
+    this.oAuthService.logOut();
   }
+
 }
