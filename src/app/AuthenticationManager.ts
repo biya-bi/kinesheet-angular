@@ -20,14 +20,10 @@ export class AuthenticationManager {
     }
 
     logIn(provider: OauthProvider) {
+        this.setProvider(provider);
         this.getAuthenticationService(provider).logIn().pipe(
             take(1),
-            tap(userProfile => {
-                if (userProfile) {
-                    this.setProvider(provider);
-                    this.userProfileSubject.next(userProfile);
-                }
-            })).subscribe();
+            tap(userProfile => this.userProfileSubject.next(userProfile))).subscribe();
     }
 
     logOut() {
