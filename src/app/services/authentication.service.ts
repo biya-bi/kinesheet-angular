@@ -1,4 +1,7 @@
+import { Observable } from "rxjs";
+import { UserProfile } from "../models/UserProfile";
+
 export interface AuthenticationService {
-    logIn(): void;
+    logIn(): Observable<UserProfile>;
     logOut(): void;
 }

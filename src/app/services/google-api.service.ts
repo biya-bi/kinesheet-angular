@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AuthConfig, OAuthService } from 'angular-oauth2-oidc';
-import { Subject } from 'rxjs';
+import { Observable, from, map, of, switchMap, take } from 'rxjs';
 import { UserProfile } from '../models/UserProfile';
 import { AuthenticationService } from './authentication.service';
 
@@ -17,23 +17,23 @@ const authConfig: AuthConfig = {
   providedIn: 'root'
 })
 export class GoogleApiService implements AuthenticationService {
-  private readonly userProfileSubject = new Subject<UserProfile>();
 
-  readonly userProfile$ = this.userProfileSubject.asObservable();
-
-  constructor(private readonly oAuthService: OAuthService) { }
-
-  logIn(): void {
+  constructor(private readonly oAuthService: OAuthService) {
     this.oAuthService.configure(authConfig);
-    this.oAuthService.loadDiscoveryDocument().then(() => {
-      this.oAuthService.tryLoginImplicitFlow().then(() => {
+  }
+
+  logIn(): Observable<UserProfile> {
+    return from(this.oAuthService.loadDiscoveryDocument()).pipe(
+      take(1),
+      switchMap(() => from(this.oAuthService.tryLoginImplicitFlow())),
+      switchMap(() => {
         if (!this.oAuthService.hasValidAccessToken()) {
           this.oAuthService.initLoginFlow();
-        } else {
-          this.oAuthService.loadUserProfile().then((userProfile) => this.userProfileSubject.next(userProfile as UserProfile));
+          return of(null);
         }
-      });
-    });
+        return from(this.oAuthService.loadUserProfile());
+      }),
+      map((result) => result as UserProfile));
   }
 
   logOut() {
