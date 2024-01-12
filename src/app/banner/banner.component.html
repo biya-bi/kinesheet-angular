@@ -4,7 +4,7 @@
 
 <div class="logged-in" *ngIf="userProfile$ | async as userProfile; else loginTemplate">
     <span class="welcome">Welcome {{ userProfile.info.name }}</span>
-    <a routerLink="/logout">
+    <a routerLink="/logout" (click)="logout()">
         <em class="material-icons">logout</em>
     </a>
 </div>

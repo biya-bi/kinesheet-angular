@@ -3,10 +3,13 @@ import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
-import { RouterOutlet } from "@angular/router";
+import { RouterModule, RouterOutlet } from "@angular/router";
 import { AppComponent } from "./app.component";
 import { BannerComponent } from "./banner/banner.component";
 import { OAuthModule } from "angular-oauth2-oidc";
+import { LoginComponent } from "./login/login.component";
+import { GoogleApiService } from "./services/google-api.service";
+import { AuthenticationManager } from "./AuthenticationManager";
 
 @NgModule({
     imports: [
@@ -16,15 +19,17 @@ import { OAuthModule } from "angular-oauth2-oidc";
         OAuthModule.forRoot(),
         ReactiveFormsModule,
         RouterOutlet,
+        RouterModule.forRoot([
+            { path: 'login', component: LoginComponent }
+        ])
     ],
-    declarations:[
+    declarations: [
         AppComponent,
-        BannerComponent
+        BannerComponent,
+        LoginComponent
     ],
-    bootstrap:[
+    bootstrap: [
         AppComponent
     ]
 })
-export class AppModule {
-
-}
+export class AppModule { }
