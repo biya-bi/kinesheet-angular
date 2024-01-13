@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthenticationManager } from '../AuthenticationManager';
+import { AuthenticationManager } from '../authentication-manager';
 import { OauthProvider } from '../models/OauthProvider';
 
 @Component({

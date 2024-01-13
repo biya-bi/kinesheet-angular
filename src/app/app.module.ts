@@ -4,12 +4,10 @@ import { NgModule } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule, RouterOutlet } from "@angular/router";
+import { OAuthModule } from "angular-oauth2-oidc";
 import { AppComponent } from "./app.component";
 import { BannerComponent } from "./banner/banner.component";
-import { OAuthModule } from "angular-oauth2-oidc";
 import { LoginComponent } from "./login/login.component";
-import { GoogleApiService } from "./services/google-api.service";
-import { AuthenticationManager } from "./AuthenticationManager";
 
 @NgModule({
     imports: [
