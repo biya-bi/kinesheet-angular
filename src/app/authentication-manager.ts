@@ -1,9 +1,9 @@
 import { Injectable, Injector } from "@angular/core";
+import { Observable, Subject, of, take, tap } from "rxjs";
 import { OauthProvider } from "./models/OauthProvider";
+import { UserProfile } from "./models/UserProfile";
 import { GithubApiService } from "./services/github-api.service";
 import { GoogleApiService } from "./services/google-api.service";
-import { UserProfile } from "./models/UserProfile";
-import { Subject, take, tap } from "rxjs";
 
 const OAUTH_PROVIDER_KEY = 'oAuthProvider';
 
@@ -11,7 +11,8 @@ const OAUTH_PROVIDER_KEY = 'oAuthProvider';
     providedIn: 'root'
 })
 export class AuthenticationManager {
-    private readonly userProfileSubject = new Subject<UserProfile>();
+    
+    private readonly userProfileSubject = new Subject<UserProfile | undefined>();
 
     readonly userProfile$ = this.userProfileSubject.asObservable();
 
@@ -32,6 +33,11 @@ export class AuthenticationManager {
             localStorage.removeItem(OAUTH_PROVIDER_KEY);
             this.getAuthenticationService(provider).logOut();
         }
+    }
+
+    tryLogIn(): Observable<UserProfile | undefined> {
+        const provider = this.getProvider();
+        return provider ? this.getAuthenticationService(provider).logIn() : of(undefined);
     }
 
     private getAuthenticationService(provider: OauthProvider) {

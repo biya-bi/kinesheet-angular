@@ -7,7 +7,7 @@ import { AuthenticationService } from './authentication.service';
 const authConfig: AuthConfig = {
   issuer: "https://accounts.google.com",
   strictDiscoveryDocumentValidation: false,
-  redirectUri: window.location.origin,
+  redirectUri: 'http://localhost:4200',
   clientId: '479603210590-tg2941ec6ivracsia1sv2bf93di5b3rp.apps.googleusercontent.com',
   scope: 'openid profile email',
   logoutUrl: 'https://www.google.com/accounts/logout'
@@ -22,7 +22,7 @@ export class GoogleApiService implements AuthenticationService {
     this.oAuthService.configure(authConfig);
   }
 
-  logIn(): Observable<UserProfile> {
+  logIn(): Observable<UserProfile | undefined> {
     return from(this.oAuthService.loadDiscoveryDocument()).pipe(
       take(1),
       switchMap(() => from(this.oAuthService.tryLoginImplicitFlow())),

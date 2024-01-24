@@ -8,6 +8,8 @@ import { OAuthModule } from "angular-oauth2-oidc";
 import { AppComponent } from "./app.component";
 import { BannerComponent } from "./banner/banner.component";
 import { LoginComponent } from "./login/login.component";
+import { HomeComponent } from "./home/home.component";
+import { authenticationGuard } from "./authentication.guard";
 
 @NgModule({
     imports: [
@@ -18,12 +20,15 @@ import { LoginComponent } from "./login/login.component";
         ReactiveFormsModule,
         RouterOutlet,
         RouterModule.forRoot([
-            { path: 'login', component: LoginComponent }
+            { path: '', component: HomeComponent, canActivate: [authenticationGuard] },
+            { path: 'home', component: HomeComponent, canActivate: [authenticationGuard] },
+            { path: 'login', component: LoginComponent },
         ])
     ],
     declarations: [
         AppComponent,
         BannerComponent,
+        HomeComponent,
         LoginComponent
     ],
     bootstrap: [

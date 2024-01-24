@@ -23,19 +23,18 @@ export class GithubApiService implements AuthenticationService {
     this.oAuthService.configure(authConfig);
   }
 
-  logIn(): Observable<UserProfile> {
+  logIn(): Observable<UserProfile | undefined> {
     return from(this.oAuthService.loadDiscoveryDocumentAndTryLogin()).pipe(
       take(1),
       switchMap(() => from(this.oAuthService.tryLoginCodeFlow())),
       switchMap(() => {
         if (!this.oAuthService.hasValidAccessToken()) {
           this.oAuthService.configure(authConfig);
-          this.oAuthService.initCodeFlow(); 
+          this.oAuthService.initCodeFlow();
           return of(null);
         }
         return from(this.oAuthService.loadUserProfile())
       }),
-      tap((u) => console.log(u)),
       map((result) => result as UserProfile));
   }
 
