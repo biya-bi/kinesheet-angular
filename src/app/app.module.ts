@@ -6,10 +6,10 @@ import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule, RouterOutlet } from "@angular/router";
 import { OAuthModule } from "angular-oauth2-oidc";
 import { AppComponent } from "./app.component";
+import { routes } from "./app.routes";
 import { BannerComponent } from "./banner/banner.component";
-import { LoginComponent } from "./login/login.component";
 import { HomeComponent } from "./home/home.component";
-import { authenticationGuard } from "./authentication.guard";
+import { LoginComponent } from "./login/login.component";
 
 @NgModule({
     imports: [
@@ -19,11 +19,7 @@ import { authenticationGuard } from "./authentication.guard";
         OAuthModule.forRoot(),
         ReactiveFormsModule,
         RouterOutlet,
-        RouterModule.forRoot([
-            { path: '', component: HomeComponent, canActivate: [authenticationGuard] },
-            { path: 'home', component: HomeComponent, canActivate: [authenticationGuard] },
-            { path: 'login', component: LoginComponent },
-        ])
+        RouterModule.forRoot(routes)
     ],
     declarations: [
         AppComponent,
