@@ -1,16 +1,20 @@
-<a routerLink="/">
-    <em class="material-icons">home</em>
-</a>
-
-<div class="logged-in" *ngIf="userProfile$ | async as userProfile; else loginTemplate">
-    <span class="welcome">Welcome {{ userProfile.info.name }}</span>
-    <a routerLink="/logout" (click)="logout()">
-        <em class="material-icons">logout</em>
+<ng-container *ngIf="{userProfile:userProfile$|async, url:url$|async} as data">
+    <a routerLink="/home">
+        <em class="material-icons">home</em>
     </a>
-</div>
 
-<ng-template #loginTemplate>
-    <a routerLink="/login" class="button fancy-button">
-        <em class="material-icons">login</em>Login
-    </a>
-</ng-template>
+    <div class="logged-in" *ngIf="data.userProfile; else loginTemplate">
+        <span class="welcome">Welcome {{ data.userProfile.info.name }}</span>
+        <a routerLink="/logout" (click)="logout()">
+            <em class="material-icons">logout</em>
+        </a>
+    </div>
+
+    <ng-template #loginTemplate>
+        <ng-container *ngIf="data.url!=='/login'">
+            <a routerLink="/login" class="button fancy-button">
+                <em class="material-icons">login</em>Login
+            </a>
+        </ng-container>
+    </ng-template>
+</ng-container>
