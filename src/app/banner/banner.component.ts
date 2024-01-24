@@ -23,8 +23,4 @@ export class BannerComponent {
     this.url$ = this.router.events.pipe(filter(e => e instanceof NavigationEnd), map(e => (e as NavigationEnd).url));
   }
 
-  logout() {
-    this.authenticationManager.logOut();
-  }
-
 }

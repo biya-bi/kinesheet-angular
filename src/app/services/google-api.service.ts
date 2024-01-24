@@ -10,7 +10,6 @@ const authConfig: AuthConfig = {
   redirectUri: 'http://localhost:4200',
   clientId: '479603210590-tg2941ec6ivracsia1sv2bf93di5b3rp.apps.googleusercontent.com',
   scope: 'openid profile email',
-  logoutUrl: 'https://www.google.com/accounts/logout'
 }
 
 @Injectable({
@@ -28,7 +27,7 @@ export class GoogleApiService implements AuthenticationService {
       switchMap(() => from(this.oAuthService.tryLoginImplicitFlow())),
       switchMap(() => {
         if (!this.oAuthService.hasValidAccessToken()) {
-          this.oAuthService.initLoginFlow();
+          this.oAuthService.initLoginFlow(undefined, { prompt: 'select_account' });
           return of(null);
         }
         return from(this.oAuthService.loadUserProfile());

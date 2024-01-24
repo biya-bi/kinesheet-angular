@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthenticationManager } from '../../authentication-manager';
 
 @Component({
   selector: 'app-logged-out',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrl: './logged-out.component.css'
 })
 export class LoggedOutComponent {
+
+  constructor(
+    private readonly authenticationManager: AuthenticationManager) {
+  }
+
+  ngOnInit() {
+    this.authenticationManager.logOut();
+  }
 
 }

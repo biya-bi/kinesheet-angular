@@ -11,7 +11,7 @@ const OAUTH_PROVIDER_KEY = 'oAuthProvider';
     providedIn: 'root'
 })
 export class AuthenticationManager {
-    
+
     private readonly userProfileSubject = new Subject<UserProfile | undefined>();
 
     readonly userProfile$ = this.userProfileSubject.asObservable();
@@ -31,6 +31,7 @@ export class AuthenticationManager {
         const provider = this.getProvider();
         if (provider) {
             localStorage.removeItem(OAUTH_PROVIDER_KEY);
+            this.userProfileSubject.next(undefined);
             this.getAuthenticationService(provider).logOut();
         }
     }
