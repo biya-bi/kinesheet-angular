@@ -10,6 +10,7 @@ import { routes } from "./app.routes";
 import { BannerComponent } from "./banner/banner.component";
 import { HomeComponent } from "./home/home.component";
 import { LoginComponent } from "./login/login.component";
+import { ObjectiveListComponent } from "./objective-list/objective-list.component";
 
 @NgModule({
     imports: [
@@ -25,7 +26,8 @@ import { LoginComponent } from "./login/login.component";
         AppComponent,
         BannerComponent,
         HomeComponent,
-        LoginComponent
+        LoginComponent,
+        ObjectiveListComponent
     ],
     bootstrap: [
         AppComponent
