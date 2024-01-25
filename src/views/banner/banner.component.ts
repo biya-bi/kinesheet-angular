@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Observable, filter, map } from 'rxjs';
-import { AuthenticationManager } from '../authentication-manager';
+import { AuthenticationManager } from '../../managers/authentication.manager';
 
 @Component({
   selector: 'app-banner',

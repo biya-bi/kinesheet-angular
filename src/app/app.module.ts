@@ -7,10 +7,10 @@ import { RouterModule, RouterOutlet } from "@angular/router";
 import { OAuthModule } from "angular-oauth2-oidc";
 import { AppComponent } from "./app.component";
 import { routes } from "./app.routes";
-import { BannerComponent } from "./banner/banner.component";
-import { HomeComponent } from "./home/home.component";
-import { LoginComponent } from "./login/login.component";
-import { ObjectiveListComponent } from "./objective-list/objective-list.component";
+import { BannerComponent } from "../views/banner/banner.component";
+import { HomeComponent } from "../views/home/home.component";
+import { LoginComponent } from "../views/login/login.component";
+import { ObjectiveListComponent } from "../views/objective-list/objective-list.component";
 
 @NgModule({
     imports: [

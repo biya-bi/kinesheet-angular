@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { AuthenticationManager } from '../authentication-manager';
-import { OauthProvider } from '../models/OauthProvider';
+import { AuthenticationManager } from '../../managers/authentication.manager';
+import { OauthProvider } from '../../models/OauthProvider';
 
 @Component({
   selector: 'app-login',

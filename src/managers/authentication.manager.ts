@@ -1,9 +1,9 @@
 import { Injectable, Injector } from "@angular/core";
 import { Observable, Subject, of, take, tap } from "rxjs";
-import { OauthProvider } from "./models/OauthProvider";
-import { UserProfile } from "./models/UserProfile";
-import { GithubApiService } from "./services/github-api.service";
-import { GoogleApiService } from "./services/google-api.service";
+import { OauthProvider } from "../models/OauthProvider";
+import { UserProfile } from "../models/UserProfile";
+import { GithubApiService } from "../services/github-api.service";
+import { GoogleApiService } from "../services/google-api.service";
 
 const OAUTH_PROVIDER_KEY = 'oAuthProvider';
 
