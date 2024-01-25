@@ -1,0 +1,11 @@
+<h1>Objectives</h1>
+
+<h2>Below is the list of objectives you have set:</h2>
+
+<ul *ngFor="let objective of objectives">
+    <li>
+        <a routerLink="/objectives/{{objective.id}}">
+            {{objective.title}}
+        </a>
+    </li>
+</ul>

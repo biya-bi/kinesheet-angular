@@ -10,7 +10,8 @@ import { routes } from "./app.routes";
 import { BannerComponent } from "../views/banner/banner.component";
 import { HomeComponent } from "../views/home/home.component";
 import { LoginComponent } from "../views/login/login.component";
-import { ObjectiveListComponent } from "../views/objective-list/objective-list.component";
+import { ObjectiveListComponent } from "../views/objectives/objective-list/objective-list.component";
+import { ObjectiveContainer } from "../views/objectives/objective-container/objective.container";
 
 @NgModule({
     imports: [
@@ -27,6 +28,7 @@ import { ObjectiveListComponent } from "../views/objective-list/objective-list.c
         BannerComponent,
         HomeComponent,
         LoginComponent,
+        ObjectiveContainer,
         ObjectiveListComponent
     ],
     bootstrap: [
