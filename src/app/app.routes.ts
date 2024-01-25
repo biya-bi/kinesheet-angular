@@ -4,7 +4,7 @@ import { authenticationGuard } from '../guards/authentication.guard';
 import { LoginComponent } from '../views/login/login.component';
 import { PageNotFoundComponent } from '../views/page-not-found/page-not-found.component';
 import { ObjectiveListComponent } from '../views/objective-list/objective-list.component';
-import { LogOutComponent } from '../views/logged/logout.component';
+import { LogOutComponent } from '../views/logout/logout.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
