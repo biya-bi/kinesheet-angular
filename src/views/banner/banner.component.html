@@ -17,31 +17,14 @@
         <div class="collapse navbar-collapse justify-content-end align-center" id="main-nav"
             *ngIf="!data.isLoginPage && !data.isLogoutPage">
             <ul class="navbar-nav">
-                <li *ngIf="data.userProfile" class="d-md-none">
-                    <span class="fw-bold me-2">Welcome {{ data.userProfile.info.name }}</span>
-                    <a routerLink="/logout" class="btn btn-secondary btn-sm">
-                        <em class="material-icons">logout</em>
-                    </a>
-                </li>
-                <li class="nav-item d-md-none" *ngIf="!data.userProfile">
-                    <a routerLink="/login" class="nav-link">Login</a>
+                <li class="nav-item d-md-none">
+                    <app-authentication [userProfile]="data.userProfile"></app-authentication>
                 </li>
                 <li class="nav-item">
                     <a routerLink="/objectives" class="nav-link">Objectives</a>
                 </li>
                 <li class="nav-item ms-2 d-none d-md-inline">
-                    <ng-container *ngIf="data.userProfile; else loginTemplate">
-                        <span class="fw-bold me-2">Welcome {{ data.userProfile.info.name }}</span>
-                        <a routerLink="/logout" class="btn btn-secondary btn-sm">
-                            <em class="material-icons">logout</em>
-                        </a>
-                    </ng-container>
-                    <ng-template #loginTemplate>
-                        <a routerLink="/login" class="btn btn-secondary d-flex btn-sm">
-                            <em class="material-icons">login</em>
-                            <span class="ms-2">Login</span>
-                        </a>
-                    </ng-template>
+                    <app-authentication [userProfile]="data.userProfile"></app-authentication>
                 </li>
             </ul>
         </div>

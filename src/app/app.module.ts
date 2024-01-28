@@ -12,6 +12,7 @@ import { ObjectiveContainer } from "../views/objectives/objective-container/obje
 import { ObjectiveListComponent } from "../views/objectives/objective-list/objective-list.component";
 import { AppComponent } from "./app.component";
 import { routes } from "./app.routes";
+import { AuthenticationComponent } from "../views/authentication/authentication.component";
 
 @NgModule({
     imports: [
@@ -25,6 +26,7 @@ import { routes } from "./app.routes";
     ],
     declarations: [
         AppComponent,
+        AuthenticationComponent,
         BannerComponent,
         HomeComponent,
         LoginComponent,
