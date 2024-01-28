@@ -10,6 +10,6 @@ import { Objective } from '../../../models/Objective';
 })
 export class ObjectiveListComponent {
 
-  @Input() objectives!: Objective[];
+  @Input() objectives: Objective[];
 
 }

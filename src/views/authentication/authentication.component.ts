@@ -7,5 +7,5 @@ import { UserProfile } from '../../models/UserProfile';
   styleUrl: './authentication.component.css'
 })
 export class AuthenticationComponent {
-  @Input() userProfile: UserProfile | undefined | null;
+  @Input() userProfile: UserProfile;
 }
