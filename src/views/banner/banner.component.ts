@@ -9,11 +9,10 @@ import { AuthenticationManager } from '../../managers/authentication.manager';
   styleUrl: './banner.component.css'
 })
 export class BannerComponent {
-  
+
   private readonly url$ = this.router.events.pipe(filter(e => e instanceof NavigationEnd), map(e => (e as NavigationEnd).url));
 
   readonly userProfile$ = this.authenticationManager.userProfile$;
-  readonly isHomePage$ = this.url$.pipe(map(url => url === '/' || url === '/home'));
   readonly isLoginPage$ = this.url$.pipe(map(url => url === '/login'));
   readonly isLogoutPage$ = this.url$.pipe(map(url => url === '/logout'));
 
