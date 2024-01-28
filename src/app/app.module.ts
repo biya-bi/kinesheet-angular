@@ -13,6 +13,7 @@ import { ObjectiveListComponent } from "../views/objectives/objective-list/objec
 import { AppComponent } from "./app.component";
 import { routes } from "./app.routes";
 import { AuthenticationComponent } from "../views/authentication/authentication.component";
+import { ObjectiveWriteComponent } from "../views/objectives/objective-write/objective-write.component";
 
 @NgModule({
     imports: [
@@ -31,7 +32,8 @@ import { AuthenticationComponent } from "../views/authentication/authentication.
         HomeComponent,
         LoginComponent,
         ObjectiveContainer,
-        ObjectiveListComponent
+        ObjectiveListComponent,
+        ObjectiveWriteComponent
     ],
     bootstrap: [
         AppComponent

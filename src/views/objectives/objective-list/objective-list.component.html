@@ -1,11 +1,19 @@
 <h1>Objectives</h1>
 
-<h2>Below is the list of objectives you have set:</h2>
+<a routerLink="/objectives/add">Add an objective</a>
 
-<ul *ngFor="let objective of objectives">
-    <li>
-        <a routerLink="/objectives/{{objective.id}}">
-            {{objective.title}}
-        </a>
-    </li>
-</ul>
+<ng-container *ngIf="objectives?.length; else emptyObjectiveTemplate">
+    <p class="fw-bold">Below is the list of objectives you have set:</p>
+
+    <ul *ngFor="let objective of objectives">
+        <li>
+            <a routerLink="/objectives/{{objective.id}}">
+                {{objective.title}}
+            </a>
+        </li>
+    </ul>
+</ng-container>
+
+<ng-template #emptyObjectiveTemplate>
+    <p>You haven't added any objective yet.</p>
+</ng-template>
