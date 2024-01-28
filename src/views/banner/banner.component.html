@@ -1,18 +1,21 @@
-<nav class="navbar navbar-expand-md" *ngIf="{userProfile: userProfile$ | async, url: url$ | async} as data">
+<nav class="navbar navbar-expand-md" *ngIf="{userProfile: userProfile$ | async, 
+        isLoginPage: isLoginPage$ | async, 
+        isLogoutPage: isLogoutPage$ | async, 
+        isHomePage: isHomePage$ | async} as data">
     <div class="container-xxl">
-        <a routerLink="/home" class="navbar-brand d-flex">
+        <a routerLink="/home" class="navbar-brand d-flex" *ngIf="!data.isHomePage">
             <em class="material-icons">home</em>
             <span class="fw-bold text-secondary">Home</span>
         </a>
         <!-- Toggle button for mobile nav -->
         <button class="navba-toggler d-md-none items-align-center" type="button" data-bs-toggle="collapse"
             data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation"
-            *ngIf="data.url !== '/login' && data.url !== '/logout'">
+            *ngIf="!data.isLoginPage && !data.isLogoutPage">
             <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Navigation bar links -->
         <div class="collapse navbar-collapse justify-content-end align-center" id="main-nav"
-            *ngIf="data.url !== '/login' && data.url !== '/logout'">
+            *ngIf="!data.isLoginPage && !data.isLogoutPage">
             <ul class="navbar-nav">
                 <li *ngIf="data.userProfile" class="d-md-none">
                     <span class="fw-bold me-2">Welcome {{ data.userProfile.info.name }}</span>

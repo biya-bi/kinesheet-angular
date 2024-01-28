@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { Observable, filter, map } from 'rxjs';
+import { filter, map } from 'rxjs';
 import { AuthenticationManager } from '../../managers/authentication.manager';
 
 @Component({
@@ -9,15 +9,17 @@ import { AuthenticationManager } from '../../managers/authentication.manager';
   styleUrl: './banner.component.css'
 })
 export class BannerComponent {
+  
+  private readonly url$ = this.router.events.pipe(filter(e => e instanceof NavigationEnd), map(e => (e as NavigationEnd).url));
 
   readonly userProfile$ = this.authenticationManager.userProfile$;
-  
-  url$: Observable<string>;
+  readonly isHomePage$ = this.url$.pipe(map(url => url === '/' || url === '/home'));
+  readonly isLoginPage$ = this.url$.pipe(map(url => url === '/login'));
+  readonly isLogoutPage$ = this.url$.pipe(map(url => url === '/logout'));
 
   constructor(
     private readonly authenticationManager: AuthenticationManager,
     private readonly router: Router) {
-    this.url$ = this.router.events.pipe(filter(e => e instanceof NavigationEnd), map(e => (e as NavigationEnd).url));
   }
 
 }
