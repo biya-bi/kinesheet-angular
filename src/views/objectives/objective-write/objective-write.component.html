@@ -1,1 +1,18 @@
-<p>objective-write works!</p>
+<h2>Add an objective</h2>
+<form [formGroup]="formGroup" (ngSubmit)="submit()">
+    <div class="container">
+        <div class="row">
+            <div class="col-auto">
+                <label for="title">Title</label>
+            </div>
+            <div class="col">
+                <input type="text" id="title" placeholder="Objective title" formControlName="title">
+            </div>
+        </div>
+    </div>
+    <div class="mt-2 d-flex">
+        <button type="submit">Save</button>
+        <span>|</span>
+        <a routerLink="/objectives">List</a>
+    </div>
+</form>
