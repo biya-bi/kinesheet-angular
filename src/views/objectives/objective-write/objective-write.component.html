@@ -1,5 +1,5 @@
 <h2>{{title$ | async}}</h2>
-<form *ngIf="formGroup$ | async as formGroup" [formGroup]="formGroup" (ngSubmit)="submit(formGroup.value)">
+<form *ngIf="formGroup" [formGroup]="formGroup" (ngSubmit)="submit()">
     <div class="container">
         <div class="row">
             <div class="col-auto">

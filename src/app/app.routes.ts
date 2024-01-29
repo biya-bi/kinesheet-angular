@@ -8,15 +8,35 @@ import { PageNotFoundComponent } from '../views/page-not-found/page-not-found.co
 import { ObjectiveAddComponent } from '../views/objectives/objective-write/objective-add.component';
 import { ObjectiveDetailsComponent } from '../views/objectives/objective-details/objective-details.component';
 import { ObjectiveEditComponent } from '../views/objectives/objective-write/objective-edit.component';
+import { ObjectiveListComponent } from '../views/objectives/objective-list/objective-list.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'home', component: HomeComponent },
     { path: 'login', component: LoginComponent },
     { path: 'logout', component: LogOutComponent },
-    { path: 'objectives/add', component: ObjectiveAddComponent, canActivate: [authenticationGuard] },
-    { path: 'objectives/details/:id', component: ObjectiveDetailsComponent, canActivate: [authenticationGuard] },
-    { path: 'objectives/edit/:id', component: ObjectiveEditComponent, canActivate: [authenticationGuard] },
-    { path: 'objectives', component: ObjectiveContainer, canActivate: [authenticationGuard] },
+    {
+        path: 'objectives',
+        component: ObjectiveContainer,
+        canActivate: [authenticationGuard],
+        children: [
+            {
+                path: '',
+                component: ObjectiveListComponent
+            },
+            {
+                path: 'add',
+                component: ObjectiveAddComponent
+            },
+            {
+                path: 'details/:id',
+                component: ObjectiveDetailsComponent
+            },
+            {
+                path: 'edit/:id',
+                component: ObjectiveEditComponent
+            },
+        ]
+    },
     { path: '**', component: PageNotFoundComponent }
 ];

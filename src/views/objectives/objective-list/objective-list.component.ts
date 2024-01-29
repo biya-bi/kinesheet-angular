@@ -1,6 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { ApiConnector } from '../../../connectors/api.connector';
-import { Observable } from 'rxjs';
 import { Objective } from '../../../models/Objective';
 
 @Component({

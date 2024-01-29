@@ -1,7 +1,5 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap } from 'rxjs';
-import { ApiConnector } from '../../../connectors/api.connector';
+import { Component, Input } from '@angular/core';
+import { Objective } from '../../../models/Objective';
 
 @Component({
   selector: 'app-objective-details',
@@ -10,8 +8,6 @@ import { ApiConnector } from '../../../connectors/api.connector';
 })
 export class ObjectiveDetailsComponent {
 
-  readonly objective$ = this.route.params.pipe(switchMap((params) => this.apiConnector.getObjective(params['id'])));
-
-  constructor(private readonly apiConnector: ApiConnector, private readonly route: ActivatedRoute, private readonly router: Router) { }
+  @Input() objective: Objective;
 
 }

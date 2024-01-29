@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable, of, take, tap } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { ApiConnector } from '../../../connectors/api.connector';
-import { ObjectiveWriteComponent } from './objective-write.component';
 import { Objective } from '../../../models/Objective';
+import { ObjectiveWriteComponent } from './objective-write.component';
 
 @Component({
   selector: 'app-objective-add',
@@ -20,9 +19,7 @@ export class ObjectiveAddComponent extends ObjectiveWriteComponent implements On
   ngOnInit(): void {
     // TODO: Get title from localized resources
     this.title$ = of('Add an objective');
-    this.formGroup$ = of(new FormGroup({
-      title: new FormControl()
-    }));
+    this.initFormGroup();
   }
 
   protected override onSubmit(objective: Objective): Observable<Objective> {

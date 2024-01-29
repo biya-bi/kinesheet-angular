@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, map, of, switchMap, take } from 'rxjs';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable, of } from 'rxjs';
 import { ApiConnector } from '../../../connectors/api.connector';
 import { Objective } from '../../../models/Objective';
 import { ObjectiveWriteComponent } from './objective-write.component';
@@ -13,28 +12,31 @@ import { ObjectiveWriteComponent } from './objective-write.component';
 })
 export class ObjectiveEditComponent extends ObjectiveWriteComponent {
 
-  constructor(protected override readonly router: Router,
-    private readonly apiConnector: ApiConnector,
-    private readonly route: ActivatedRoute) {
+  private _objective: Objective;
+
+  constructor(protected override readonly router: Router, private readonly apiConnector: ApiConnector) {
     super(router);
-    
   }
 
   ngOnInit(): void {
     // TODO: Get title from localized resources
     this.title$ = of('Edit objective');
-    this.formGroup$ = this.route.params.pipe(
-      switchMap((params) => this.apiConnector.getObjective(params['id'])),
-      map(objective => {
-        return new FormGroup({
-          id: new FormControl(objective.id),
-          title: new FormControl(objective.title)
-        });
-      }));
   }
 
   protected override onSubmit(objective: Objective): Observable<Objective> {
     return this.apiConnector.editObjective(objective);
+  }
+
+  @Input()
+  set objective(value: Objective) {
+    if (this._objective !== value) {
+      this._objective = value;
+      this.initFormGroup(value);
+    }
+  }
+
+  get objective(): Objective {
+    return this._objective;
   }
 
 }
