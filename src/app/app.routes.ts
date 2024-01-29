@@ -5,7 +5,7 @@ import { LoginComponent } from '../views/login/login.component';
 import { LogOutComponent } from '../views/logout/logout.component';
 import { ObjectiveContainer } from '../views/objectives/objective-container/objective.container';
 import { PageNotFoundComponent } from '../views/page-not-found/page-not-found.component';
-import { ObjectiveAddComponent } from '../views/objectives/objective-add/objective-add.component';
+import { ObjectiveAddComponent } from '../views/objectives/objective-write/objective-add.component';
 import { ObjectiveDetailsComponent } from '../views/objectives/objective-details/objective-details.component';
 
 export const routes: Routes = [
