@@ -26,7 +26,7 @@ export class GoogleApiService implements AuthenticationService {
       take(1),
       switchMap(() => from(this.oAuthService.tryLoginImplicitFlow())),
       switchMap(() => {
-        if (!this.oAuthService.hasValidAccessToken()) {
+        if (!this.oAuthService.hasValidAccessToken() || this.tokenExpired()) {
           this.oAuthService.initLoginFlow(undefined, { prompt: 'select_account' });
           return of(null);
         }
@@ -37,6 +37,10 @@ export class GoogleApiService implements AuthenticationService {
 
   logOut() {
     this.oAuthService.logOut();
+  }
+
+  private tokenExpired() {
+    return Date.now() - this.oAuthService.getIdTokenExpiration() > 0;
   }
 
 }
