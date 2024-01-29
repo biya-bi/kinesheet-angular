@@ -1,17 +1,15 @@
 <nav class="navbar navbar-expand-md" *ngIf="{userProfile: userProfile$ | async, 
-        isLoginPage: isLoginPage$ | async, 
-        isLogoutPage: isLogoutPage$ | async} as data">
+        isLoginPage: isLoginPage$ | async} as data">
     <div class="container-xxl">
         <span class="fw-bold text-secondary">Kinesheet</span>
         <!-- Toggle button for mobile nav -->
         <button class="navba-toggler d-md-none items-align-center" type="button" data-bs-toggle="collapse"
             data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation"
-            *ngIf="!data.isLoginPage && !data.isLogoutPage">
+            *ngIf="!data.isLoginPage">
             <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Navigation bar links -->
-        <div class="collapse navbar-collapse justify-content-end align-center" id="main-nav"
-            *ngIf="!data.isLoginPage && !data.isLogoutPage">
+        <div class="collapse navbar-collapse justify-content-end align-center" id="main-nav" *ngIf="!data.isLoginPage">
             <ul class="navbar-nav">
                 <li class="nav-item d-md-none">
                     <app-authentication [userProfile]="data.userProfile"></app-authentication>

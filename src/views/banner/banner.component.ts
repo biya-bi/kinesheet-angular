@@ -14,7 +14,6 @@ export class BannerComponent {
 
   readonly userProfile$ = this.authenticationManager.userProfile$;
   readonly isLoginPage$ = this.url$.pipe(map(url => url === '/login'));
-  readonly isLogoutPage$ = this.url$.pipe(map(url => url === '/logout'));
 
   constructor(
     private readonly authenticationManager: AuthenticationManager,
