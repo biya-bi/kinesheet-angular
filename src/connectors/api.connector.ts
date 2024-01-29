@@ -33,5 +33,8 @@ export class ApiConnector {
     return this.httpClient.post<Objective>(this.url + '/objectives', objective, this.getOptions());
   }
 
+  editObjective(objective: Objective): Observable<Objective> {
+    return this.httpClient.put<Objective>(this.url + '/objectives/' + objective.id, objective, this.getOptions());
+  }
 
 }

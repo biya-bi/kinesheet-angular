@@ -7,6 +7,7 @@ import { ObjectiveContainer } from '../views/objectives/objective-container/obje
 import { PageNotFoundComponent } from '../views/page-not-found/page-not-found.component';
 import { ObjectiveAddComponent } from '../views/objectives/objective-write/objective-add.component';
 import { ObjectiveDetailsComponent } from '../views/objectives/objective-details/objective-details.component';
+import { ObjectiveEditComponent } from '../views/objectives/objective-write/objective-edit.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -15,6 +16,7 @@ export const routes: Routes = [
     { path: 'logout', component: LogOutComponent },
     { path: 'objectives/add', component: ObjectiveAddComponent, canActivate: [authenticationGuard] },
     { path: 'objectives/details/:id', component: ObjectiveDetailsComponent, canActivate: [authenticationGuard] },
+    { path: 'objectives/edit/:id', component: ObjectiveEditComponent, canActivate: [authenticationGuard] },
     { path: 'objectives', component: ObjectiveContainer, canActivate: [authenticationGuard] },
     { path: '**', component: PageNotFoundComponent }
 ];

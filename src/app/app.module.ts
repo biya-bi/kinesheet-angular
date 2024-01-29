@@ -15,6 +15,7 @@ import { ObjectiveListComponent } from "../views/objectives/objective-list/objec
 import { ObjectiveAddComponent } from "../views/objectives/objective-write/objective-add.component";
 import { AppComponent } from "./app.component";
 import { routes } from "./app.routes";
+import { ObjectiveEditComponent } from "../views/objectives/objective-write/objective-edit.component";
 
 @NgModule({
     imports: [
@@ -35,6 +36,7 @@ import { routes } from "./app.routes";
         ObjectiveContainer,
         ObjectiveAddComponent,
         ObjectiveDetailsComponent,
+        ObjectiveEditComponent,
         ObjectiveListComponent,
     ],
     bootstrap: [
