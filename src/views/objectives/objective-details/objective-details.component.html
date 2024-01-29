@@ -1,0 +1,16 @@
+<h2>Objective details</h2>
+<div class="container"  *ngIf="objective$ | async as objective">
+    <div class="row">
+        <div class="col-auto">
+            <label class="fw-bold">Title:</label>
+        </div>
+        <div class="col">
+            <label>{{objective.title}}</label>
+        </div>
+    </div>
+    <div class="mt-2 d-flex">
+        <a routerLink="/objectives/edit/{{objective.id}}">Edit</a>
+        <span class="ms-2 me-2">|</span>
+        <a routerLink="/objectives">List</a>
+    </div>
+</div>

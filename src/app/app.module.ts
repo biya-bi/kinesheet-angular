@@ -14,6 +14,7 @@ import { AppComponent } from "./app.component";
 import { routes } from "./app.routes";
 import { AuthenticationComponent } from "../views/authentication/authentication.component";
 import { ObjectiveWriteComponent } from "../views/objectives/objective-write/objective-write.component";
+import { ObjectiveDetailsComponent } from "../views/objectives/objective-details/objective-details.component";
 
 @NgModule({
     imports: [
@@ -32,6 +33,7 @@ import { ObjectiveWriteComponent } from "../views/objectives/objective-write/obj
         HomeComponent,
         LoginComponent,
         ObjectiveContainer,
+        ObjectiveDetailsComponent,
         ObjectiveListComponent,
         ObjectiveWriteComponent
     ],
