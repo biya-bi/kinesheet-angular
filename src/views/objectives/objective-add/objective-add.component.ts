@@ -1,16 +1,15 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Objective } from '../../../models/Objective';
-import { ApiConnector } from '../../../connectors/api.connector';
-import { take, tap } from 'rxjs';
 import { Router } from '@angular/router';
+import { take, tap } from 'rxjs';
+import { ApiConnector } from '../../../connectors/api.connector';
 
 @Component({
-  selector: 'app-objective-write',
-  templateUrl: './objective-write.component.html',
-  styleUrl: './objective-write.component.css'
+  selector: 'app-objective-add',
+  templateUrl: './objective-add.component.html',
+  styleUrl: './objective-add.component.css'
 })
-export class ObjectiveWriteComponent implements OnInit {
+export class ObjectiveAddComponent implements OnInit {
 
   formGroup: FormGroup;
 

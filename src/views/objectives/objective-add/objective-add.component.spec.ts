@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ObjectiveWriteComponent } from './objective-write.component';
+import { ObjectiveAddComponent } from './objective-add.component';
 
 describe('ObjectiveWriteComponent', () => {
-  let component: ObjectiveWriteComponent;
-  let fixture: ComponentFixture<ObjectiveWriteComponent>;
+  let component: ObjectiveAddComponent;
+  let fixture: ComponentFixture<ObjectiveAddComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ObjectiveWriteComponent]
+      imports: [ObjectiveAddComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(ObjectiveWriteComponent);
+    fixture = TestBed.createComponent(ObjectiveAddComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -13,7 +13,7 @@ import { ObjectiveListComponent } from "../views/objectives/objective-list/objec
 import { AppComponent } from "./app.component";
 import { routes } from "./app.routes";
 import { AuthenticationComponent } from "../views/authentication/authentication.component";
-import { ObjectiveWriteComponent } from "../views/objectives/objective-write/objective-write.component";
+import { ObjectiveAddComponent } from "../views/objectives/objective-add/objective-add.component";
 import { ObjectiveDetailsComponent } from "../views/objectives/objective-details/objective-details.component";
 
 @NgModule({
@@ -35,7 +35,7 @@ import { ObjectiveDetailsComponent } from "../views/objectives/objective-details
         ObjectiveContainer,
         ObjectiveDetailsComponent,
         ObjectiveListComponent,
-        ObjectiveWriteComponent
+        ObjectiveAddComponent
     ],
     bootstrap: [
         AppComponent
