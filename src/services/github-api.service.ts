@@ -23,7 +23,7 @@ export class GithubApiService implements AuthenticationService {
     this.oAuthService.configure(authConfig);
   }
 
-  logIn(): Observable<UserProfile | undefined> {
+  logIn(): Observable<UserProfile> {
     return from(this.oAuthService.loadDiscoveryDocumentAndTryLogin()).pipe(
       take(1),
       switchMap(() => from(this.oAuthService.tryLoginCodeFlow())),

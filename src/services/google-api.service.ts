@@ -21,7 +21,7 @@ export class GoogleApiService implements AuthenticationService {
     this.oAuthService.configure(authConfig);
   }
 
-  logIn(): Observable<UserProfile | undefined> {
+  logIn(): Observable<UserProfile> {
     return from(this.oAuthService.loadDiscoveryDocument()).pipe(
       take(1),
       switchMap(() => from(this.oAuthService.tryLoginImplicitFlow())),
