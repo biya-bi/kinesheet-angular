@@ -1,8 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { OAuthService } from 'angular-oauth2-oidc';
-import { Objective } from '../models/objective';
 import { Observable } from 'rxjs';
+import { Objective } from '../models/objective';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 export class ApiConnector {
 
   private readonly url = 'http://localhost:8080';
+  private readonly objectiveEndpoint = this.url + '/objectives';
 
   constructor(private readonly httpClient: HttpClient, private readonly oAuthService: OAuthService) { }
 
@@ -22,23 +23,27 @@ export class ApiConnector {
   }
 
   getObjectives(): Observable<Objective[]> {
-    return this.httpClient.get<Objective[]>(this.url + '/objectives', this.getOptions());
+    return this.httpClient.get<Objective[]>(this.objectiveEndpoint, this.getOptions());
   }
 
-  getObjective(id: String): Observable<Objective> {
-    return this.httpClient.get<Objective>(this.url + '/objectives/' + id, this.getOptions());
+  getObjective(id: string): Observable<Objective> {
+    return this.httpClient.get<Objective>(this.getObjectiveIdEndpoint(id), this.getOptions());
   }
 
   addObjective(objective: Objective): Observable<Objective> {
-    return this.httpClient.post<Objective>(this.url + '/objectives', objective, this.getOptions());
+    return this.httpClient.post<Objective>(this.objectiveEndpoint, objective, this.getOptions());
   }
 
   editObjective(objective: Objective): Observable<Objective> {
-    return this.httpClient.put<Objective>(this.url + '/objectives/' + objective.id, objective, this.getOptions());
+    return this.httpClient.put<Objective>(this.getObjectiveIdEndpoint(objective.id), objective, this.getOptions());
   }
 
-  deleteObjective(id: String): Observable<void> {
-    return this.httpClient.delete<void>(this.url + '/objectives/' + id, this.getOptions());
+  deleteObjective(id: string): Observable<void> {
+    return this.httpClient.delete<void>(this.getObjectiveIdEndpoint(id), this.getOptions());
+  }
+
+  private getObjectiveIdEndpoint(id: string): string {
+    return this.objectiveEndpoint + '/' + id;
   }
 
 }
