@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { ApiConnector } from '../../../connectors/api.connector';
-import { Objective } from '../../../models/Objective';
+import { Objective } from '../../../models/objective';
 import { ObjectiveWriteComponent } from './objective-write.component';
 
 @Component({

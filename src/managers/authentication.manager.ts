@@ -1,7 +1,7 @@
 import { Injectable, Injector } from "@angular/core";
 import { Observable, Subject, of, take, tap } from "rxjs";
-import { OauthProvider } from "../models/OauthProvider";
-import { UserProfile } from "../models/UserProfile";
+import { OauthProvider } from "../models/oauth-provider";
+import { UserProfile } from "../models/user-profile";
 import { GithubApiService } from "../services/github-api.service";
 import { GoogleApiService } from "../services/google-api.service";
 

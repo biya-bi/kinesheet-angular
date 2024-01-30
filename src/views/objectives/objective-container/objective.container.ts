@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { take, tap } from 'rxjs';
 import { ApiConnector } from '../../../connectors/api.connector';
-import { ModalResponse } from '../../../models/ModalResponse';
+import { ModalResponse } from '../../../models/modal-response';
 import { ObjectiveDetailsComponent } from '../objective-details/objective-details.component';
 import { ObjectiveListComponent } from '../objective-list/objective-list.component';
 import { ObjectiveEditComponent } from '../objective-write/objective-edit.component';

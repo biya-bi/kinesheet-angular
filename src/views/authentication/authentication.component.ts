@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { UserProfile } from '../../models/UserProfile';
+import { UserProfile } from '../../models/user-profile';
 
 @Component({
   selector: 'app-authentication',

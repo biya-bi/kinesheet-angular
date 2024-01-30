@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable, take, tap } from 'rxjs';
-import { Objective } from '../../../models/Objective';
+import { Objective } from '../../../models/objective';
 
 @Component({
     template: '',

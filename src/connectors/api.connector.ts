@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { OAuthService } from 'angular-oauth2-oidc';
-import { Objective } from '../models/Objective';
+import { Objective } from '../models/objective';
 import { Observable } from 'rxjs';
 
 @Injectable({

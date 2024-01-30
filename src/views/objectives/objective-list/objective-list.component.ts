@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Objective } from '../../../models/Objective';
+import { Objective } from '../../../models/objective';
 
 @Component({
   selector: 'app-objective-list',

@@ -1,4 +1,4 @@
-import { ModalAnswer } from "./ModalAnswer";
+import { ModalAnswer } from "./modal-answer";
 
 export interface ModalResponse {
     closeElement: HTMLElement;
