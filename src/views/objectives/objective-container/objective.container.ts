@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { take, tap } from 'rxjs';
 import { ApiConnector } from '../../../connectors/api.connector';
+import { ModalResponse } from '../../../models/ModalResponse';
 import { ObjectiveDetailsComponent } from '../objective-details/objective-details.component';
 import { ObjectiveListComponent } from '../objective-list/objective-list.component';
 import { ObjectiveEditComponent } from '../objective-write/objective-edit.component';
@@ -20,6 +21,16 @@ export class ObjectiveContainer {
       this.apiConnector.getObjectives().pipe(take(1), tap(objectives => component.objectives = objectives)).subscribe();
     } else if (component instanceof ObjectiveDetailsComponent || component instanceof ObjectiveEditComponent) {
       this.apiConnector.getObjective(this.getObjectiveId()).pipe(take(1), tap(objective => component.objective = objective)).subscribe();
+    }
+  }
+
+  onResponse(response: ModalResponse) {
+    if (response.answer === 'YES') {
+      this.apiConnector.deleteObjective(this.getObjectiveId())
+        .pipe(take(1), tap(() => {
+          response.closeElement.click();
+          this.router.navigate(['/objectives']);
+        })).subscribe();
     }
   }
 

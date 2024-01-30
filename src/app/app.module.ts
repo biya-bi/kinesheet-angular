@@ -10,12 +10,13 @@ import { BannerComponent } from "../views/banner/banner.component";
 import { HomeComponent } from "../views/home/home.component";
 import { LoginComponent } from "../views/login/login.component";
 import { ObjectiveContainer } from "../views/objectives/objective-container/objective.container";
+import { ObjectiveDeleteComponent } from "../views/objectives/objective-delete/objective-delete.component";
 import { ObjectiveDetailsComponent } from "../views/objectives/objective-details/objective-details.component";
 import { ObjectiveListComponent } from "../views/objectives/objective-list/objective-list.component";
 import { ObjectiveAddComponent } from "../views/objectives/objective-write/objective-add.component";
+import { ObjectiveEditComponent } from "../views/objectives/objective-write/objective-edit.component";
 import { AppComponent } from "./app.component";
 import { routes } from "./app.routes";
-import { ObjectiveEditComponent } from "../views/objectives/objective-write/objective-edit.component";
 
 @NgModule({
     imports: [
@@ -35,6 +36,7 @@ import { ObjectiveEditComponent } from "../views/objectives/objective-write/obje
         LoginComponent,
         ObjectiveContainer,
         ObjectiveAddComponent,
+        ObjectiveDeleteComponent,
         ObjectiveDetailsComponent,
         ObjectiveEditComponent,
         ObjectiveListComponent,

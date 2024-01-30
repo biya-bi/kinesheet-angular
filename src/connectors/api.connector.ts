@@ -37,4 +37,8 @@ export class ApiConnector {
     return this.httpClient.put<Objective>(this.url + '/objectives/' + objective.id, objective, this.getOptions());
   }
 
+  deleteObjective(id: String): Observable<void> {
+    return this.httpClient.delete<void>(this.url + '/objectives/' + id, this.getOptions());
+  }
+
 }
