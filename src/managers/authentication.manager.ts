@@ -1,5 +1,5 @@
 import { Injectable, Injector } from "@angular/core";
-import { Observable, Subject, of, take, tap } from "rxjs";
+import { Observable, Subject, of, shareReplay, take, tap } from "rxjs";
 import { OauthProvider } from "../models/oauth-provider";
 import { UserProfile } from "../models/user-profile";
 import { GithubApiService } from "../services/github-api.service";
@@ -15,6 +15,8 @@ export class AuthenticationManager {
     private readonly userProfileSubject = new Subject<UserProfile>();
 
     readonly userProfile$ = this.userProfileSubject.asObservable();
+
+    private tryLogin$: Observable<UserProfile>;
 
     constructor(private readonly injector: Injector) {
         this.autoLogin();
@@ -37,8 +39,11 @@ export class AuthenticationManager {
     }
 
     tryLogIn(): Observable<UserProfile> {
-        const provider = this.getProvider();
-        return provider ? this.getAuthenticationService(provider).logIn() : of(undefined);
+        if (!this.tryLogin$) {
+            const provider = this.getProvider();
+            this.tryLogin$ = provider ? this.getAuthenticationService(provider).logIn().pipe(shareReplay(1)) : of(undefined);
+        }
+        return this.tryLogin$;
     }
 
     private getAuthenticationService(provider: OauthProvider) {
