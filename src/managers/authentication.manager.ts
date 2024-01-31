@@ -12,7 +12,7 @@ const OAUTH_PROVIDER_KEY = 'oAuthProvider';
 })
 export class AuthenticationManager {
 
-    private readonly userProfileSubject = new Subject<UserProfile | undefined>();
+    private readonly userProfileSubject = new Subject<UserProfile>();
 
     readonly userProfile$ = this.userProfileSubject.asObservable();
 
@@ -36,7 +36,7 @@ export class AuthenticationManager {
         }
     }
 
-    tryLogIn(): Observable<UserProfile | undefined> {
+    tryLogIn(): Observable<UserProfile> {
         const provider = this.getProvider();
         return provider ? this.getAuthenticationService(provider).logIn() : of(undefined);
     }
