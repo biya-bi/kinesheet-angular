@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AuthConfig, OAuthService } from 'angular-oauth2-oidc';
-import { Observable, from, map, of, switchMap, take, tap } from 'rxjs';
+import { Observable, from, map, of, switchMap, take } from 'rxjs';
 import { UserProfile } from '../models/user-profile';
 import { AuthenticationService } from './authentication.service';
 

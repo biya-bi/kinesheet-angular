@@ -7,7 +7,7 @@ import { AuthenticationService } from './authentication.service';
 const authConfig: AuthConfig = {
   issuer: "https://accounts.google.com",
   strictDiscoveryDocumentValidation: false,
-  redirectUri: 'http://localhost:4200',
+  redirectUri: document.location.origin,
   clientId: '479603210590-tg2941ec6ivracsia1sv2bf93di5b3rp.apps.googleusercontent.com',
   scope: 'openid profile email',
 }
